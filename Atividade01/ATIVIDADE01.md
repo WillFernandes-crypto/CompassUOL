@@ -372,6 +372,9 @@ Faça múltiplos commits sempre que possível.
    11. git push --all
    12. git switch main
    13. git merge -m "Merge triagem para main" triagem
+   14. git add .
+   15. git commit -a -m "Novo commit atividade 1"
+   16. git push --all
 
 ## Markdown
 
