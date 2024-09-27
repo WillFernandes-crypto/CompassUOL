@@ -359,22 +359,22 @@ Faça múltiplos commits sempre que possível.
 
 1. Criou-se o repositório em github.com;
 2. No terminal do VSCode:
-   1. git init
-   2. git remote add origin https://github.com/WillFernandes-crypto/CompassUOL.git
-   3. git branch -M main
-   4. git add .
-   5. git commit -a -m "Envio da atividade 1"
-   6. git push -u origin main
-   7. git branch triagem     
-   8. git switch triagem    
-   9. git add .   
-   10. git commit -a -m "Envio da atividade 1 pela branch triagem"
-   11. git push --all
-   12. git switch main
-   13. git merge -m "Merge triagem para main" triagem
-   14. git add .
-   15. git commit -a -m "Novo commit atividade 1"
-   16. git push --all
+   1. `git init`
+   2. `git remote add origin https://github.com/WillFernandes-crypto/CompassUOL.git`
+   3. `git branch -M main`
+   4. `git add .`
+   5. `git commit -a -m "Envio da atividade 1"`
+   6. `git push -u origin main`
+   7. `git branch triagem `    
+   8. `git switch triagem`    
+   9. `git add .`   
+   10. `git commit -a -m "Envio da atividade 1 pela branch triagem"`
+   11. `git push --all`
+   12. `git switch main`
+   13. `git merge -m "Merge triagem para main" triagem`
+   14. `git add .`
+   15. `git commit -a -m "Novo commit atividade 1"`
+   16. `git push --all`
 
 ## Markdown
 
