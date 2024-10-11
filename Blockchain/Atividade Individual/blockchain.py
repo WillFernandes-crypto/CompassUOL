@@ -104,7 +104,7 @@ class KnownNodesMemory:
         return self.known_nodes
 class Network:
     # Configuração inicial de um nó na rede blockchain
-    FIRST_KNOWN_NODE_HOSTNAME = "node00.my-blockchain.gruyaume.com"
+    FIRST_KNOWN_NODE_HOSTNAME = "node00.my-blockchain.willhost.com"
 
     def __init__(self, node: Node, init_known_nodes_file: bool = True):
         self.node = node
