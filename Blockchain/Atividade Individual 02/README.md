@@ -1,4 +1,4 @@
-> # Atividade Individual
+> # Atividade Individual 02
 > Incrementar a blockchain desenvolvida na Atividade Individual.
 > 
 > Novas adições realizadas:
