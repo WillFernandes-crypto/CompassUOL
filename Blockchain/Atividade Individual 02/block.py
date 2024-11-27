@@ -10,14 +10,13 @@ class Block:
         self.hash = self.calculate_hash()
     
     def calculate_hash(self):
-        # Inclui o nonce no cálculo do hash
         sha = hashlib.sha256()
         sha.update(
             str(self.index).encode('utf-8') +
             str(self.timestamp).encode('utf-8') +
             str(self.data).encode('utf-8') +
             str(self.prev_hash).encode('utf-8') +
-            str(self.nonce).encode('utf-8')  # Inclua o nonce aqui
+            str(self.nonce).encode('utf-8')  # O nonce é parte do cálculo
         )
         return sha.hexdigest()
     
