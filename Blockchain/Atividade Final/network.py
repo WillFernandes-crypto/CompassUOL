@@ -142,13 +142,14 @@ class Network:
 
 # Função responsável por imprimir os detalhes de cada bloco na blockchain.
 def print_blockchain(chain):
-    if chain:  # Verifica se a cadeia não está vazia.
+    if chain:
         for block in chain:
             print(f'Block: {block.index}')  
             print(f'Timestamp: {block.timestamp}')  
             print(f'Data: {block.data}') 
             print(f'Hash: {block.hash}')  
             print(f'Hash Prev: {block.prev_hash}') 
+            print(f'Transactions: {block.data}')  # Adiciona a impressão das transações
             print(20 * '---') 
     else:
         print("The blockchain is empty.")  
