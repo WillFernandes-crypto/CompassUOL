@@ -1,12 +1,13 @@
 import hashlib
 
 class Block:
-    def __init__(self, index, timestamp, data, prev_hash):
+    def __init__(self, index, timestamp, data, prev_hash, reward=0):
         self.index = index
         self.timestamp = timestamp
         self.data = data
         self.prev_hash = prev_hash
         self.nonce = 0  # Inicialize o nonce em 0
+        self.reward = reward  # Adiciona a recompensa ao bloco
         self.hash = self.calculate_hash()
     
     def calculate_hash(self):

@@ -16,6 +16,16 @@ class Node:
     def advertise(self, other_node_hostname):
         logging.info(f'Node {self.hostname} advertised to {other_node_hostname}') 
 
+    # Método para receber um bloco propagado
+    def receive_block(self, block):
+        logging.info(f'Node {self.hostname} received block {block.index}')
+        self.blockchain.add_block(block)
+
+    # Método para receber uma transação propagada
+    def receive_transaction(self, transaction):
+        logging.info(f'Node {self.hostname} received transaction')
+        self.blockchain.add_transaction(transaction)
+
 # Classe que gerencia a memória dos nós conhecidos na rede
 class KnownNodesMemory:
     # Método construtor que inicializa a lista de nós conhecidos
