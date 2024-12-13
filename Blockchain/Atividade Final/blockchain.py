@@ -18,7 +18,6 @@ class Blockchain:
 
     def add_block(self, new_block):
         new_block.prev_hash = self.chain[-1].hash
-        new_block.mine_block(self.difficulty)  # Chama o método de mineração
         self.chain.append(new_block)
         self.update_balances(new_block)  # Atualiza os saldos após adicionar o bloco
 
