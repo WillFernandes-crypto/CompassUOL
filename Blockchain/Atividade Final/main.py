@@ -1,5 +1,7 @@
 from node import Node
 from network import Network, print_blockchain, consultar_historico_endereco
+from ecdsa import SigningKey, SECP256k1
+import json
 
 my_node = Node("localhost")
 network = Network(my_node)
@@ -8,6 +10,14 @@ network.join_network()
 # Inicializando saldos para os endereços
 network.blockchain_memory.balances['AA1234567890abcdef1234567890abcdef1234567890abcdef'] = 100
 network.blockchain_memory.balances['CC1234567890abcdef1234567890abcdef1234567890abcdef'] = 100
+
+# Gerando chaves para o comprador
+comprador_sk = SigningKey.generate(curve=SECP256k1)
+comprador_vk = comprador_sk.get_verifying_key()
+
+# Gerando chaves para o vendedor
+vendedor_sk = SigningKey.generate(curve=SECP256k1)
+vendedor_vk = vendedor_sk.get_verifying_key()
 
 compra1 = {
     'item': 'Asus ROG',  
@@ -25,11 +35,15 @@ doc = {
     'vendedor': 'DDabcdef1234567890abcdef1234567890abcdef1234567890'   # 50 caracteres
 }
 
+# Assinando as transações
+compra1_signature = comprador_sk.sign(json.dumps(compra1, sort_keys=True).encode()).hex()
+doc_signature = comprador_sk.sign(json.dumps(doc, sort_keys=True).encode()).hex()
+
 # Adicionando as transações à blockchain
-network.blockchain_memory.add_transaction(compra1)
+network.blockchain_memory.add_transaction(compra1, compra1_signature, comprador_vk.to_string().hex())
 network.propagate_transaction(compra1)  # Propaga a transação para outros nós
 
-network.blockchain_memory.add_transaction(doc)
+network.blockchain_memory.add_transaction(doc, doc_signature, comprador_vk.to_string().hex())
 network.propagate_transaction(doc)  # Propaga a transação para outros nós
 
 # Imprimindo a blockchain após as transações

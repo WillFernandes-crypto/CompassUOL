@@ -2,8 +2,10 @@ import datetime as date
 from block import Block  
 import re  # Importa o módulo para expressões regulares (regex)
 import logging
+import hashlib
+import json
+from ecdsa import SigningKey, VerifyingKey, SECP256k1
 
-# Gerenciador de toda a estrutura de blocos na blockchain
 class Blockchain:
     def __init__(self, difficulty=4):
         self.chain = [self.create_genesis_block()]
@@ -20,7 +22,7 @@ class Blockchain:
         self.chain.append(new_block)
         self.update_balances(new_block)  # Atualiza os saldos após adicionar o bloco
 
-    def add_transaction(self, transaction_data):
+    def add_transaction(self, transaction_data, signature, public_key):
         comprador = transaction_data.get('comprador', '')
         vendedor = transaction_data.get('vendedor', '')
         valor = transaction_data.get('valor', 0)
@@ -36,6 +38,10 @@ class Blockchain:
 
         if self.balances.get(comprador, 0) < valor + taxa:
             logging.error(f"Transação rejeitada: saldo insuficiente - Comprador: {comprador}, Saldo: {self.balances.get(comprador, 0)}, Valor: {valor}, Taxa: {taxa}\n")
+            return
+
+        if not self.verify_signature(transaction_data, signature, public_key):
+            logging.error(f"Transação rejeitada: assinatura inválida\n")
             return
 
         # Adiciona a transação à blockchain
@@ -84,3 +90,8 @@ class Blockchain:
             self.balances[vendedor] = self.balances.get(vendedor, 0) + valor
         minerador = block.prev_hash  # Assumindo que o minerador é o nó anterior
         self.balances[minerador] = self.balances.get(minerador, 0) + taxa
+
+    def verify_signature(self, transaction_data, signature, public_key):
+        message = json.dumps(transaction_data, sort_keys=True).encode()
+        verifying_key = VerifyingKey.from_string(bytes.fromhex(public_key), curve=SECP256k1)
+        return verifying_key.verify(bytes.fromhex(signature), message)
