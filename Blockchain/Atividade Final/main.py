@@ -39,12 +39,16 @@ doc = {
 compra1_signature = comprador_sk.sign(json.dumps(compra1, sort_keys=True).encode()).hex()
 doc_signature = comprador_sk.sign(json.dumps(doc, sort_keys=True).encode()).hex()
 
-# Adicionando as transações à blockchain
+# Adicionando as transações à mempool
 network.blockchain_memory.add_transaction(compra1, compra1_signature, comprador_vk.to_string().hex())
 network.propagate_transaction(compra1)  # Propaga a transação para outros nós
 
 network.blockchain_memory.add_transaction(doc, doc_signature, comprador_vk.to_string().hex())
 network.propagate_transaction(doc)  # Propaga a transação para outros nós
+
+# Mineração das transações pendentes
+miner_address = 'EE1234567890abcdef1234567890abcdef1234567890abcdef'
+network.blockchain_memory.mine_pending_transactions(miner_address)
 
 # Imprimindo a blockchain após as transações
 print_blockchain(network.blockchain_memory.chain)

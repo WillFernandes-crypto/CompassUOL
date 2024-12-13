@@ -3,7 +3,7 @@ from block import Block
 import re  # Importa o módulo para expressões regulares (regex)
 import logging
 import json
-from ecdsa import SigningKey, VerifyingKey, SECP256k1
+from ecdsa import VerifyingKey, SECP256k1
 
 class Blockchain:
     def __init__(self, difficulty=4):
@@ -11,6 +11,7 @@ class Blockchain:
         self.difficulty = difficulty
         self.transaction_history = {}  # Dicionário para armazenar o histórico de transações por endereço
         self.balances = {}  # Dicionário para armazenar os saldos dos endereços
+        self.mempool = []  # Lista para armazenar transações pendentes
 
     def create_genesis_block(self):
         return Block(0, date.datetime.now(), 'Genesis Block', '0')
@@ -43,15 +44,33 @@ class Blockchain:
             logging.error(f"Transação rejeitada: assinatura inválida\n")
             return
 
-        # Adiciona a transação à blockchain
+        # Adiciona a transação à mempool
+        self.mempool.append((transaction_data, signature, public_key))
+        logging.info(f"Transação adicionada à mempool: {transaction_data}")
+
+    def mine_pending_transactions(self, miner_address):
+        if not self.mempool:
+            logging.info("Nenhuma transação na mempool para minerar.")
+            return
+
+        # Cria um novo bloco com as transações pendentes
         index = len(self.chain)
         timestamp = date.datetime.now()
-        new_block = Block(index, timestamp, transaction_data, self.chain[-1].hash, reward=taxa)
+        transactions = [tx[0] for tx in self.mempool]
+        new_block = Block(index, timestamp, transactions, self.chain[-1].hash)
+
+        # Minera o bloco
+        new_block.mine_block(self.difficulty)
+
+        # Adiciona o bloco à cadeia
         self.add_block(new_block)
 
-        # Registra a transação no histórico de cada endereço
-        self._update_transaction_history(comprador, transaction_data)
-        self._update_transaction_history(vendedor, transaction_data)
+        # Limpa a mempool
+        self.mempool = []
+
+        # Recompensa o minerador
+        self.balances[miner_address] = self.balances.get(miner_address, 0) + sum(tx['taxa'] for tx in transactions)
+        logging.info(f"Bloco minerado e adicionado à cadeia. Recompensa de {sum(tx['taxa'] for tx in transactions)} atribuída ao endereço {miner_address}.")
 
     def _update_transaction_history(self, address, transaction_data):
         if address not in self.transaction_history:
@@ -77,18 +96,20 @@ class Blockchain:
         return valid
 
     def update_balances(self, block):
-        data = block.data
-        comprador = data.get('comprador', '')
-        vendedor = data.get('vendedor', '')
-        valor = data.get('valor', 0)
-        taxa = data.get('taxa', 0)
+        for data in block.data:
+            comprador = data.get('comprador', '')
+            vendedor = data.get('vendedor', '')
+            valor = data.get('valor', 0)
+            taxa = data.get('taxa', 0)
 
-        if comprador:
-            self.balances[comprador] = self.balances.get(comprador, 0) - valor - taxa
-        if vendedor:
-            self.balances[vendedor] = self.balances.get(vendedor, 0) + valor
-        minerador = block.prev_hash  # Assumindo que o minerador é o nó anterior
-        self.balances[minerador] = self.balances.get(minerador, 0) + taxa
+            if comprador:
+                self.balances[comprador] = self.balances.get(comprador, 0) - valor - taxa
+                self._update_transaction_history(comprador, data)
+            if vendedor:
+                self.balances[vendedor] = self.balances.get(vendedor, 0) + valor
+                self._update_transaction_history(vendedor, data)
+            minerador = block.prev_hash  # Assumindo que o minerador é o nó anterior
+            self.balances[minerador] = self.balances.get(minerador, 0) + taxa
 
     def verify_signature(self, transaction_data, signature, public_key):
         message = json.dumps(transaction_data, sort_keys=True).encode()
