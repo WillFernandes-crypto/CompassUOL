@@ -16,15 +16,15 @@ class Node:
     def advertise(self, other_node_hostname):
         logging.info(f'Node {self.hostname} advertised to {other_node_hostname}') 
 
-    # Método que simula a propagação de um bloco para outros nós
-    def propagate_block(self, block):
-        logging.info(f"Propagando bloco {block.index} para outros nós.")
-        # Aqui você pode implementar a lógica para enviar o bloco para outros nós
+    # Método para receber um bloco propagado
+    def receive_block(self, block):
+        logging.info(f'Node {self.hostname} received block {block.index}')
+        self.blockchain.add_block(block)
 
-    # Método que simula a propagação de uma transação para outros nós
-    def propagate_transaction(self, transaction_data):
-        logging.info(f"Propagando transação para outros nós: {transaction_data}")
-        # Aqui você pode implementar a lógica para enviar a transação para outros nós
+    # Método para receber uma transação propagada
+    def receive_transaction(self, transaction):
+        logging.info(f'Node {self.hostname} received transaction')
+        self.blockchain.add_transaction(transaction)
 
 # Classe que gerencia a memória dos nós conhecidos na rede
 class KnownNodesMemory:

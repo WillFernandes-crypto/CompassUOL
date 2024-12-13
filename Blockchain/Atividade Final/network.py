@@ -140,16 +140,35 @@ class Network:
     def return_known_nodes(self):
         return self.known_nodes_memory.return_known_nodes() 
 
+    # Método para propagar um bloco para todos os nós conhecidos
+    def propagate_block(self, block):
+        logging.info("Propagating block to all known nodes")
+        for known_node in self.known_nodes_memory.return_known_nodes():
+            if known_node.hostname != self.node.hostname:
+                try:
+                    known_node.receive_block(block)
+                except requests.exceptions.ConnectionError:
+                    logging.info(f"Node not answering: {known_node.hostname}")
+
+    # Método para propagar uma transação para todos os nós conhecidos
+    def propagate_transaction(self, transaction):
+        logging.info("Propagating transaction to all known nodes")
+        for known_node in self.known_nodes_memory.return_known_nodes():
+            if known_node.hostname != self.node.hostname:
+                try:
+                    known_node.receive_transaction(transaction)
+                except requests.exceptions.ConnectionError:
+                    logging.info(f"Node not answering: {known_node.hostname}")
+
 # Função responsável por imprimir os detalhes de cada bloco na blockchain.
 def print_blockchain(chain):
-    if chain:
+    if chain:  # Verifica se a cadeia não está vazia.
         for block in chain:
             print(f'Block: {block.index}')  
             print(f'Timestamp: {block.timestamp}')  
             print(f'Data: {block.data}') 
             print(f'Hash: {block.hash}')  
             print(f'Hash Prev: {block.prev_hash}') 
-            print(f'Transactions: {block.data}')  # Adiciona a impressão das transações
             print(20 * '---') 
     else:
         print("The blockchain is empty.")  

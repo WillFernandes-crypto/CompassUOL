@@ -9,7 +9,7 @@ class Blockchain:
         self.chain = [self.create_genesis_block()]
         self.difficulty = difficulty
         self.transaction_history = {}  # Dicionário para armazenar o histórico de transações por endereço
-        self.balances = {}  # Dicionário para rastrear saldos de endereços
+        self.balances = {}  # Dicionário para armazenar os saldos dos endereços
 
     def create_genesis_block(self):
         return Block(0, date.datetime.now(), 'Genesis Block', '0')
@@ -18,23 +18,7 @@ class Blockchain:
         new_block.prev_hash = self.chain[-1].hash
         new_block.mine_block(self.difficulty)  # Chama o método de mineração
         self.chain.append(new_block)
-        self.update_balances(new_block.data)  # Atualiza os saldos após adicionar o bloco
-
-    def update_balances(self, transaction_data):
-        comprador = transaction_data.get('comprador', '')
-        vendedor = transaction_data.get('vendedor', '')
-        valor = transaction_data.get('valor', 0)
-        taxa = transaction_data.get('taxa', 0)
-
-        # Atualiza o saldo do vendedor
-        if vendedor not in self.balances:
-            self.balances[vendedor] = 0
-        self.balances[vendedor] += valor - taxa  # O vendedor recebe o valor menos a taxa
-
-        # Atualiza o saldo do comprador
-        if comprador not in self.balances:
-            self.balances[comprador] = 0
-        self.balances[comprador] -= valor  # O comprador perde o valor
+        self.update_balances(new_block)  # Atualiza os saldos após adicionar o bloco
 
     def add_transaction(self, transaction_data):
         comprador = transaction_data.get('comprador', '')
@@ -50,15 +34,17 @@ class Blockchain:
             logging.error(f"Transação rejeitada: valor ou taxa inválidos - Valor: {valor}, Taxa: {taxa}\n")
             return
 
-        if self.get_balance(comprador) < valor:
-            logging.error(f"Transação rejeitada: saldo insuficiente - Comprador: {comprador}, Saldo: {self.get_balance(comprador)}\n")
+        if self.balances.get(comprador, 0) < valor + taxa:
+            logging.error(f"Transação rejeitada: saldo insuficiente - Comprador: {comprador}, Saldo: {self.balances.get(comprador, 0)}, Valor: {valor}, Taxa: {taxa}\n")
             return
 
+        # Adiciona a transação à blockchain
         index = len(self.chain)
         timestamp = date.datetime.now()
-        new_block = Block(index, timestamp, transaction_data, self.chain[-1].hash)
+        new_block = Block(index, timestamp, transaction_data, self.chain[-1].hash, reward=taxa)
         self.add_block(new_block)
 
+        # Registra a transação no histórico de cada endereço
         self._update_transaction_history(comprador, transaction_data)
         self._update_transaction_history(vendedor, transaction_data)
 
@@ -85,10 +71,16 @@ class Blockchain:
         print(f"Endereço {'válido' if valid else 'inválido'}: {repr(address)}")
         return valid
 
-    def get_balance(self, address):
-        return self.balances.get(address, 0)
+    def update_balances(self, block):
+        data = block.data
+        comprador = data.get('comprador', '')
+        vendedor = data.get('vendedor', '')
+        valor = data.get('valor', 0)
+        taxa = data.get('taxa', 0)
 
-    def resolve_conflicts(self, new_chain):
-        if len(new_chain) > len(self.chain):
-            self.chain = new_chain
-            logging.info("Conflito resolvido: nova cadeia adotada.")
+        if comprador:
+            self.balances[comprador] = self.balances.get(comprador, 0) - valor - taxa
+        if vendedor:
+            self.balances[vendedor] = self.balances.get(vendedor, 0) + valor
+        minerador = block.prev_hash  # Assumindo que o minerador é o nó anterior
+        self.balances[minerador] = self.balances.get(minerador, 0) + taxa
