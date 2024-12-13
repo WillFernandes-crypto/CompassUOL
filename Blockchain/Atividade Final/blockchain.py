@@ -2,7 +2,6 @@ import datetime as date
 from block import Block  
 import re  # Importa o módulo para expressões regulares (regex)
 import logging
-import hashlib
 import json
 from ecdsa import SigningKey, VerifyingKey, SECP256k1
 
