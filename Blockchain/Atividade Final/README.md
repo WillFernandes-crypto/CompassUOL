@@ -7,7 +7,7 @@ Com esta atividade, vocês vão:
 3. Implementar um sistema que controla os saldos dos endereços e garante que só transações válidas sejam processadas.
 4. Adicionar taxas de transação e recompensas para mineradores.
 
-## O que vocês vão implementar
+## O que foi implementado
 
 ### 1. Propagação de Blocos e Transações
 Imagine que cada nó na rede tem sua própria cópia da blockchain. Quando um novo bloco ou transação é criado, ele precisa ser compartilhado com os outros nós. Essa comunicação é essencial para manter a blockchain sincronizada.
