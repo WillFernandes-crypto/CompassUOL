@@ -7,7 +7,7 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "ourString",
+				"name": "myString",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -22,11 +22,11 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_updateString",
+						"name": "_newString",
 						"type": "string"
 					}
 				],
-				"name": "updateOurString",
+				"name": "updateString",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -45,7 +45,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/ExampleBoolean.sol": "Example"
+			"contracts/Project - Smart Money - Deposit and Withdrawals/SampleContract.sol": "SampleContract"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -59,12 +59,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/ExampleBoolean.sol": {
-			"keccak256": "0xa3b04e2d3ac6b017da9aff3717904924e5b2f74264f221840383584ed7b99f9d",
+		"contracts/Project - Smart Money - Deposit and Withdrawals/SampleContract.sol": {
+			"keccak256": "0x2d7f82e4a2bee238aa7ef8ac2e65bc2fb202141c585fed34675c1ff0224d9054",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c6eeac6213a272bf0510a40c35b2e2eefedf2ec53fdf50a21abea6414bd2a154",
-				"dweb:/ipfs/QmPH3n6agsU6tQdXezkAKmTz1tb7j3da51ohLUbJHAS5Tu"
+				"bzz-raw://51d6a617d002e3cdf8ce7922ecc9fff3db7cc2ef72569faff7ab3d9ae68d814f",
+				"dweb:/ipfs/QmcRbVmzLUZGCC9vvgP1DW3wkiDqtzDo7H7g1o3rtYVaT9"
 			]
 		}
 	},
