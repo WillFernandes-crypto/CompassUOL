@@ -1,0 +1,90 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "balanceReceived",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "receiveMoney",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawMoney",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidity/contracts/Project - Smart Wallet/ExampleExceptionAssert.sol": "ExampleExceptionRequire"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidity/contracts/Project - Smart Wallet/ExampleExceptionAssert.sol": {
+			"keccak256": "0x1d1888cca5ef75dac5eaa39a584566cb1dbe8f9669dc3111ebfd2c5e2b394dc8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dde0f98eecf3d489c36e815b89ec4af9a725416c373e07e04d620436a029b360",
+				"dweb:/ipfs/QmNcg11kEYWsb9TAK6MDswo5Cx8ChUKH7dS2Tedod7Wg1z"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,63 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractOne",
+						"type": "address"
+					}
+				],
+				"name": "depositOnContractOne",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidity/contracts/Project - Smart Wallet/ExmpleContractCall.sol": "ContractTwo"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidity/contracts/Project - Smart Wallet/ExmpleContractCall.sol": {
+			"keccak256": "0x5d783f90f6893bdf82b3143712539e7622a30c0796ec08556560d669ddb768df",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://90d45dcf5be2e398e838f36bf8f866c091c992576f5e811d899bb1e0ef7ce157",
+				"dweb:/ipfs/QmcCAQDFq4JwL36YPiw7gXCDvFGTXz48tukLExfTYCXEc8"
+			]
+		}
+	},
+	"version": 1
+}

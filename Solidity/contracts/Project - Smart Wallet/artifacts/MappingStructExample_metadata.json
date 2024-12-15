@@ -1,0 +1,107 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "depositMoney",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_numDeposit",
+						"type": "uint256"
+					}
+				],
+				"name": "getDepositNum",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "amount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timestamp",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct MappingStructExample.Transaction",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawMoney",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidity/contracts/Project - Smart Wallet/ExampleMappingStruct.sol": "MappingStructExample"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidity/contracts/Project - Smart Wallet/ExampleMappingStruct.sol": {
+			"keccak256": "0xd8e53e83771af8ff0916e10c0899c58f55e5ff3bc0b719a57f8027ccfd3b2cc4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4df09fa8f3937051914e10d4017e3f2cc087ced2110928166cb4121ece422140",
+				"dweb:/ipfs/QmeVxuYHRfifTWBsR1cC1rumy727Xkh91siQdNa97umLRp"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,85 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "myString",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_newPayableString",
+						"type": "string"
+					}
+				],
+				"name": "payableUpdateString",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_newString",
+						"type": "string"
+					}
+				],
+				"name": "updateString",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Project - Smart Money - Deposit and Withdrawals/SampleContract.sol": "SampleContract"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Project - Smart Money - Deposit and Withdrawals/SampleContract.sol": {
+			"keccak256": "0xf3c6207084279a6dcccc5a3097297322c57b40055fa31d76e9003fb30e6db117",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a1be7ea3c042d2e6a40dc05df92de04afe333930058f0459c08a7f513336f16d",
+				"dweb:/ipfs/QmchpQZqBr7GGCRyaUcWazGPzh8wmXbA2tvieEC8EqiUsb"
+			]
+		}
+	},
+	"version": 1
+}

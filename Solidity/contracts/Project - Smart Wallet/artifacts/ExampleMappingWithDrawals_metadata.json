@@ -7,28 +7,22 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "myString",
+				"name": "getBalance",
 				"outputs": [
 					{
-						"internalType": "string",
+						"internalType": "uint256",
 						"name": "",
-						"type": "string"
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "_newString",
-						"type": "string"
-					}
-				],
-				"name": "updateString",
+				"inputs": [],
+				"name": "sendMoney",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			}
 		],
@@ -45,7 +39,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Project - Smart Money - Deposit and Withdrawals/SampleContract.sol": "SampleContract"
+			"Solidity/contracts/Project - Smart Wallet/ExampleMapping2.sol": "ExampleMappingWithDrawals"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -59,12 +53,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Project - Smart Money - Deposit and Withdrawals/SampleContract.sol": {
-			"keccak256": "0x2d7f82e4a2bee238aa7ef8ac2e65bc2fb202141c585fed34675c1ff0224d9054",
+		"Solidity/contracts/Project - Smart Wallet/ExampleMapping2.sol": {
+			"keccak256": "0xba8f1b94a397cb6a97e887cff3415eabeee087a7bc7ada6c54a82826d02631a0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://51d6a617d002e3cdf8ce7922ecc9fff3db7cc2ef72569faff7ab3d9ae68d814f",
-				"dweb:/ipfs/QmcRbVmzLUZGCC9vvgP1DW3wkiDqtzDo7H7g1o3rtYVaT9"
+				"bzz-raw://df6aa3ed60314a972d36304898c00c0ca2f6502943287f52da426399705e4e9e",
+				"dweb:/ipfs/QmVPV7d4xvAF6qsQ5HH6KNrY3p3S2KN9rS7sUUeTuhMnEd"
 			]
 		}
 	},

@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidity/contracts/Project - Smart Wallet/ExampleMapping2.sol": "ExampleMappingWi"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidity/contracts/Project - Smart Wallet/ExampleMapping2.sol": {
+			"keccak256": "0x15c66df1d4ba7297683b13bd6713a0f7850d945b124c2e48b83a322b01b760c9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d41ec1f9fb9f2416731e9217cbcc6fd9506bc3567acbfe92c36de2a1c9d0aec5",
+				"dweb:/ipfs/QmeTiyVQcphrVsNsaXyfPARFQ7SMzv2ML5mHpuRoG3n6Pz"
+			]
+		}
+	},
+	"version": 1
+}

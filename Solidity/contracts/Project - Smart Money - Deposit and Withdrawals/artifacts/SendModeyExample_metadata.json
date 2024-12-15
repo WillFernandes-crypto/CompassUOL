@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Project - Smart Money - Deposit and Withdrawals/SendMoneyExample.sol": "SendModeyExample"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Project - Smart Money - Deposit and Withdrawals/SendMoneyExample.sol": {
+			"keccak256": "0xd35fd888805956d3df92dfd4b27dbeef880c081c286d9a103bdfc5faa9f58388",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://727872a40040ff06002a1d1dd25ef42bdb6e39cc7e60bb611c6d99b1839da06d",
+				"dweb:/ipfs/QmWa1mxaUJcydZaqE6KnX3okGBhHR3G9EUc58nsE9QUQbZ"
+			]
+		}
+	},
+	"version": 1
+}

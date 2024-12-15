@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "lowLevelData",
+						"type": "bytes"
+					}
+				],
+				"name": "ErrorLogBytes",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "code",
+						"type": "uint256"
+					}
+				],
+				"name": "ErrorLogCode",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					}
+				],
+				"name": "ErrorLogging",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "catchTheError",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidity/contracts/Project - Smart Wallet/ExampleTryCatch.sol": "ErrorHandling"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidity/contracts/Project - Smart Wallet/ExampleTryCatch.sol": {
+			"keccak256": "0xb3c4de39fdb372a583874d049956cb6555f37ae57cecc463a0d34a7918a414ac",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1a20d393cb90ee061330bab5f179379db36a7d46d8d8020c4ef21f2721d400ea",
+				"dweb:/ipfs/QmZZqRfTGGgrva18vsBLckM8bxwfDZqzzTAMnh3RYzc7cf"
+			]
+		}
+	},
+	"version": 1
+}
